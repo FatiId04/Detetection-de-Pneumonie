@@ -1,36 +1,12 @@
 package com.example.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.tomcat.util.http.fileupload.DeferredFileOutputStream;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileItemHeaders;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.tomcat.util.http.fileupload.ParameterParser;
-import org.apache.tomcat.util.http.fileupload.util.Streams;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.project.model.Patient;
 import com.example.project.service.PatientService;
-import ai.djl.Model;
 import ai.djl.ModelException;
 import ai.djl.inference.Predictor;
 import ai.djl.modality.Classifications;
@@ -39,7 +15,6 @@ import ai.djl.modality.cv.ImageFactory;
 import ai.djl.modality.cv.translator.ImageClassificationTranslator;
 import ai.djl.modality.cv.util.NDImageUtils;
 import ai.djl.repository.zoo.Criteria;
-import ai.djl.repository.zoo.ModelZoo;
 import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
 import ai.djl.translate.Translator;
@@ -49,7 +24,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/patients")
 public class PatientController {
@@ -109,5 +83,4 @@ public class PatientController {
             e.printStackTrace();
             return "Prediction Error";
         }
-    }
-}
+   
